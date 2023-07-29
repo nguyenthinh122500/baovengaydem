@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Default styles for the sidebar */
+        .sidebar {
+            background-color: #f0f0f0;
+            width: 250px;
+            padding: 20px;
+            height: 100vh; /* Make the sidebar full height */
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease;
+        }
+
+        /* Styles for the sidebar when it's open */
+        .sidebar.open {
+            left: 0;
+        }
+
+        /* Styles for the content area */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Media query for smaller screens (e.g., mobile) */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <!-- Your menu items here -->
+            <li><a href="#">GIỚI THIỆU</a></li>
+            <li>
+                <a href="#">DỊCH VỤ <i class="fa fa-angle-down"></i></a>
+                <ul>
+                    <li><a href="#">DỊCH VỤ BẢO VỆ NHÀ MÁY</a></li>
+                    <li><a href="#">DỊCH VỤ BẢO VỆ KHU CÔNG NGHIỆP</a></li>
+                    <!-- Add other sub-menu items -->
+                </ul>
+            </li>
+            <!-- Add other menu items -->
+        </ul>
+    </div>
+
+    <!-- Content area -->
+    <div class="content">
+        <!-- Your page content goes here -->
+    </div>
+
+    <!-- JavaScript to toggle the sidebar -->
+    <script>
+        // Function to toggle the sidebar
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
