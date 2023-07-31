@@ -1,88 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Sidebar</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Default styles for the sidebar */
-        .sidebar {
-            background-color: #f0f0f0;
-            width: 250px;
-            padding: 20px;
-            height: 100vh; /* Make the sidebar full height */
-            box-sizing: border-box;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            transition: left 0.3s ease;
-        }
-
-        /* Styles for the sidebar when it's open */
-        .sidebar.open {
-            left: 0;
-        }
-
-        /* Styles for the content area */
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            transition: margin-left 0.3s ease;
-        }
-
-        /* Media query for smaller screens (e.g., mobile) */
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                left: -100%;
-            }
-
-            .sidebar.open {
-                left: 0;
-            }
-
-            .content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <ul>
-            <!-- Your menu items here -->
-            <li><a href="#">GIỚI THIỆU</a></li>
-            <li>
-                <a href="#">DỊCH VỤ <i class="fa fa-angle-down"></i></a>
-                <ul>
-                    <li><a href="#">DỊCH VỤ BẢO VỆ NHÀ MÁY</a></li>
-                    <li><a href="#">DỊCH VỤ BẢO VỆ KHU CÔNG NGHIỆP</a></li>
-                    <!-- Add other sub-menu items -->
-                </ul>
-            </li>
-            <!-- Add other menu items -->
-        </ul>
-    </div>
 
-    <!-- Content area -->
-    <div class="content">
-        <!-- Your page content goes here -->
-    </div>
+    <button id="toggle"><i class="fa fa-bars"></i></button>
+                                            <nav id="nav">
+                                                <ul class="parent_0">
+                                                    <li><a href="#0"><i class="fa fa-home"></i><label>Home</label></a></li>
+                                                    <li><a href="#0"><i class="fa fa-barcode"></i><label>About</label></a></li>
+                                                    <li>
+                                                        <a id="clients" href="#0"><i class="fa fa-users"></i><label>Clients</label></a>
+                                                        <ul id="for-clients" class="parent_1">
+                                                            <li><a href="#0">Burger King</a></li>
+                                                            <li><a href="#0">Southwest Airlines</a></li>
+                                                            <li><a href="#0">Levi Strauss</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a id="services" href="#0"><i
+                                                                class="fa fa-american-sign-language-interpreting"></i><label>Services</label></a>
+                                                        <ul id="for-services" class="parent_1">
+                                                            <li><a href="#0">Print Design</a></li>
+                                                            <li><a href="#0">Web Design</a></li>
+                                                            <li><a href="#0">Mobile App Development</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#0"><i class="fa fa-envelope"></i><label>Contact</label></a></li>
+                                                </ul>
+                                            </nav>
 
-    <!-- JavaScript to toggle the sidebar -->
     <script>
-        // Function to toggle the sidebar
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
+        let menusLi = document.querySelector('.parent_0').children;
+let nav = window.nav;
+let main = window.main;
+let burger = window.toggle;
+var navHidden = true;
+function initNav() {
+  hideLi();
+  hideNav();
+}
+function hideLi() {
+  for(li in menusLi){
+    var liM = menusLi[li];
+    var liT = liM.tagName;
+    if(liT == 'LI') {
+      liM.classList += 'hidden';
+    }
+  }
+}
+function showLi() {
+  for(li in menusLi){
+    var liM = menusLi[li];
+    var liT = liM.tagName;
+    if(liT == 'LI') {
+      liM.classList.remove('hidden')
+    }
+  }
+}
+function hideNav() {
+  setTimeout(function() {
+    nav.classList += 'hidden';
+  }, 300)
+  setTimeout(function() {
+    main.classList += 'hidden';
+  }, 900)
+}
+function showNav() {
+  setTimeout(function() {
+    main.classList.remove('hidden');
+  }, 300)
+  setTimeout(function() {
+    nav.classList.remove('hidden');
+  }, 600)
+}
+function toggleNav() {
+  if ( navHidden ){
+    showAll();
+  }else{
+    hideAll();
+  }
+}
+function hideAll() {
+  navHidden = true;
+  hideNav();
+  setTimeout(function() {
+    hideLi();
+  }, 300)
+}
+function showAll() {
+  navHidden = false;
+  showNav();
+  setTimeout(function() {
+    showLi();
+  }, 1200)
+}
+initNav();
+burger.addEventListener('click', function() {
+  toggleNav();
+});
+
     </script>
 </body>
+
 </html>
