@@ -154,7 +154,7 @@ li {
     background-color: #fff;
     list-style: none;
     top: 100%;
-    left:-250px;
+    left:20px;
     right: auto;
     position: absolute;
     padding: 0;
@@ -163,6 +163,24 @@ li {
     pointer-events: none;
     z-index: 999;
 }
+.jet-menu.jet-menu--animation-type-fade .jet-sub-menu{
+    display: block;
+    min-width: 200px;
+    margin: 0;
+    background-color: #fff;
+    list-style: none;
+    top: 100%;
+    left:-80px;
+    right: auto;
+    position: absolute;
+    padding: 0;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+    pointer-events: none;
+    z-index: 999;
+}
+
+
 
 ul {
     display: block;
@@ -1124,26 +1142,33 @@ ul {
     position: relative;
 }
 
-
-
-@media screen and (min-width: 1050px) and (max-width: 1300px) {
-    .carousel-slide img {
-
-        width: 100%;
-
-    }
+.jet-menu-title{
+    font-weight: 600;
 }
 
-@media screen and (min-width: 916px) and (max-width: 1024px) {
-    .carousel-slide img {
+ 
+
+@media screen and (min-width: 1050px) and (max-width: 1300px) {
+    /* .carousel-slide img {
+
+        width: 100%;
+
+    } */
+}
+
+@media screen and (min-width: 916px) and (max-width: 1400px) {
+    /* .carousel-slide img {
 
         width: 100%;
 
     }
+    .jet-sub-menu {
+        position: absolute !important;
+    } */
 }
 
 @media screen and (min-width: 576px) and (max-width: 910px) {
-    .carousel-slide img {
+    /* .carousel-slide img {
 
         width: 100%;
 
@@ -1151,24 +1176,36 @@ ul {
 
     .jet-sub-menu {
         position: absolute !important;
-        left: -605% !important;
-    }
+        left: -35% !important;
+    } */
 
-}
+    #jet-menu-item-4270:hover .jet-sub-menu {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        left: -175px;
+    }
+} 
 
 @media screen and (min-width: 350px) and (max-width: 576px) {
-    .carousel-slide img {
+    /* .carousel-slide img {
         height: 300px;
         width: 100%;
 
     }
 
-    .jet-menu-item .jet-sub-menu.inverse-side {
-        right: 0;
-        left: auto;
+    .jet-sub-menu {
+        position: absolute !important;
+        left: -50% !important;
+    } */
+    #jet-menu-item-4270:hover .jet-sub-menu {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        left: -200px;
+        padding-left: 20px;
     }
-
-}
+} 
 
 .elementor-grid {
     display: grid;
